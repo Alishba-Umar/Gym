@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Member</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'gym/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Are you sure you want to delete {{ member.name }}?</h1>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Yes, delete</button>
+        </form>
+        <div class="button"><a href="{% url 'member_list' %}">No, go back</a></div>
+    </div>
+</body>
+</html>

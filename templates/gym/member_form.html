@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Member</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'gym/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Member</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+        <div class="button"><a href="{% url 'member_list' %}">Back to Members</a></div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'gym/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <h2>Members</h2>
+        <ul>
+            {% for member in members %}
+                <li>{{ member.name }} - {{ member.status }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Members with Payment Due</h2>
+        <ul>
+            {% for member in due_members %}
+                <li>{{ member.name }} - Due on {{ member.fee_date }}</li>
+            {% endfor %}
+        </ul>
+
+        <div class="button"><a href="{% url 'member_list' %}">View All Members</a></div>
+        <div class="button"><a href="{% url 'report' %}">View Reports</a></div>
+    </div>
+</body>
+</html>
